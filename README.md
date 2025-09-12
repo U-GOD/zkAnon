@@ -77,8 +77,8 @@ StarkNet Foundry: curl -L https://raw.githubusercontent.com/foundry-rs/starknet-
 ```
 
 ```
-### Build Instruction
-# Clone the repository
+# Build Instruction
+### Clone the repository
 git clone https://github.com/your-username/zkAnon.git
 cd zkAnon
 
