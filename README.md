@@ -80,48 +80,59 @@ StarkNet Foundry: curl -L https://raw.githubusercontent.com/foundry-rs/starknet-
 # Build Instruction
 ### Clone the repository
 git clone https://github.com/your-username/zkAnon.git
+
 cd zkAnon
 
-# Build the ZK circuit
+### Build the ZK circuit
+
 cd circuit
+
 nargo check
 
-# Build and test the smart contract
+### Build and test the smart contract
 cd ../contract
+
 scarb build
+
 snforge test
 ```
 
 ```
-### 📖 Usage
-## 1. Group Setup
+# 📖 Usage
+### 1. Group Setup
 
-# Contract deploys with empty merkle root
-# Group admin adds members by updating merkle root
+Contract deploys with empty merkle root
+
+Group admin adds members by updating merkle root
 
 ## 2. Member Interaction
 
-# User generates membership proof offline
+User generates membership proof offline
+
 nargo prove
 
-# User submits message with proof
-# Contract verifies proof and stores message
+User submits message with proof
+
+Contract verifies proof and stores message
 
 ## 3. Message Retrieval
 
-# Anyone can read anonymous messages
-# Messages are completely unlinkable to authors
+Anyone can read anonymous messages
+
+Messages are completely unlinkable to authors
 ```
 
 ```
-### 🧪 Testing
+# 🧪 Testing
 
-# Run circuit tests
+### Run circuit tests
 cd circuit
+
 nargo test
 
-# Run contract tests  
+### Run contract tests  
 cd ../contract
+
 snforge test
 ```
 
