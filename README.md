@@ -125,12 +125,12 @@ Messages are completely unlinkable to authors
 ```
 # 🧪 Testing
 
-### Run circuit tests
+### Run circuit tests:
 cd circuit
 
 nargo test
 
-### Run contract tests  
+### Run contract tests:
 cd ../contract
 
 snforge test
