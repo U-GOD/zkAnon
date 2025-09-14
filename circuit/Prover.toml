@@ -1,0 +1,4 @@
+root = ""
+secret_index = ""
+secret_leaf = ""
+secret_path = ["", "", ""]
