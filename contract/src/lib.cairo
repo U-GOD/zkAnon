@@ -15,9 +15,10 @@ mod zkAnonChat {
     #[starknet::interface]
     trait IzkAnonChat<TContractState> {
         fn set_merkle_root(ref self: TContractState, new_root: felt252);
-        fn post_anonymous_message(ref self: TContractState, proof: Array<felt252>);
+        fn post_anonymous_message(ref self: TContractState, proof: Array<felt252>, message: felt252);  // Added message param
         fn get_latest_message(self: @TContractState) -> felt252;
         fn has_message_been_posted(self: @TContractState) -> bool;
+        fn get_merkle_root(self: @TContractState) -> felt252;  // New getter
     }
 
     #[constructor]
@@ -32,9 +33,9 @@ mod zkAnonChat {
             self.merkle_root.write(new_root);
         }
 
-        fn post_anonymous_message(ref self: ContractState, proof: Array<felt252>) {
-            assert(proof.len() > 0, 'Proof must be provided');
-            self.latest_message.write(0x48656c6c6f205a4b21);
+        fn post_anonymous_message(ref self: ContractState, proof: Array<felt252>, message: felt252) {
+            assert(proof.len() > 0, 'Proof must be provided');  // Dummy for now
+            self.latest_message.write(message);  // Store dynamic message
             self.message_posted.write(true);
         }
 
@@ -44,6 +45,10 @@ mod zkAnonChat {
 
         fn has_message_been_posted(self: @ContractState) -> bool {
             self.message_posted.read()
+        }
+
+        fn get_merkle_root(self: @ContractState) -> felt252 {
+            self.merkle_root.read()
         }
     }
 

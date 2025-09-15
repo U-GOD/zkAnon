@@ -23,6 +23,8 @@ mod integration_tests {
         start_cheat_caller_address(contract_address, admin);
         let _new_root: felt252 = 123456;
         dispatcher.set_merkle_root(_new_root);
+
+        assert(dispatcher.get_merkle_root() == _new_root, 'Wrong root');  // New assert
     }
 
     #[test]
@@ -59,9 +61,10 @@ mod integration_tests {
         let dispatcher = IzkAnonChatDispatcher { contract_address };
 
         let _proof: Array<felt252> = array![1, 2, 3];
-        dispatcher.post_anonymous_message(_proof);
+        let test_message: felt252 = 0x74657374206d657373616765;  // "test message" in hex
+        dispatcher.post_anonymous_message(_proof, test_message);  // Pass message
 
         assert(dispatcher.has_message_been_posted(), 'Msg posted');
-        assert(dispatcher.get_latest_message() == 0x48656c6c6f205a4b21, 'Wrong msg');
+        assert(dispatcher.get_latest_message() == test_message, 'Wrong msg');
     }
 }
